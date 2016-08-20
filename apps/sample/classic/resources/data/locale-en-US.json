@@ -1,0 +1,9 @@
+{
+  "title": "Welcome",
+  "name": "Name",
+  "phone": "Phone",
+  "navigation": {
+    "users": "Users"
+  },
+  "content": "Content"
+}

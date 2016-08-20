@@ -1,1 +1,1 @@
-# Localize
+Example project using localization lib from https://github.com/jurisv/ext-locale
