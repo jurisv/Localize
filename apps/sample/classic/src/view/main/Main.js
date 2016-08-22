@@ -15,7 +15,9 @@ Ext.define('Sample.view.main.Main', {
 
         'Sample.view.main.MainController',
         'Sample.view.main.MainModel',
-        'Sample.view.main.List'
+        'Sample.view.main.List',
+        'Test1.*',
+        'Sample.nested.*'
     ],
 
     controller: 'main',
@@ -75,26 +77,34 @@ Ext.define('Sample.view.main.Main', {
         }
     },
 
-    items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
-        items: [{
-            xtype: 'mainlist'
-        }]
-    }, {
-        title: '^navigation.users', //lookup using string notation (Recommended)
-        xtype: 'test1-users',
-        iconCls: 'fa-user'
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: {$key: 'content', tpl: '{0}: {loremIpsum}'} //lookup using object notation; only required when using in conjunction with tpl
+    items: [
+        {
+            title: 'Home',
+            iconCls: 'fa-home',
+            // The following grid shares a store with the classic version's grid as well!
+            items: [{
+                xtype: 'mainlist'
+            }]
+        },
+        {
+            title: 'Registration',
+            xtype: 'regpanel',
+            iconCls: 'fa-user'
+        },
+        {
+            title: '^navigation.users', //lookup using string notation (Recommended)
+            xtype: 'test1-users',
+            iconCls: 'fa-user'
+        }, {
+            title: 'Groups',
+            iconCls: 'fa-users',
+            bind: {
+                html: {$key: 'content', tpl: '{0}: {loremIpsum}'} //lookup using object notation; only required when using in conjunction with tpl
+            }
+        }, {
+            title: 'Settings',
+            iconCls: 'fa-cog',
+            html: {$key: 'content2', tpl: '{0}: {loremIpsum}'} // Intentional error as example (observe console log)
         }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        html: {$key: 'content2', tpl: '{0}: {loremIpsum}'} // Intentional error as example (observe console log)
-    }]
+    ]
 });

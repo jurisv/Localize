@@ -52,9 +52,7 @@
      *      ]
      */
     "requires": [
-        "font-awesome",
-        "test1",
-        "test2"
+        "font-awesome"
     ],
 
     /**
@@ -531,7 +529,8 @@
             "requires": [
                 "localize",
                 "test1",
-                "test2"
+                "test2",
+                "nested"
             ],
             "sass": {
                 "generated": {
