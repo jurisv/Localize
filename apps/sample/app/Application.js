@@ -8,6 +8,13 @@ Ext.define('Sample.Application', {
 
     name: 'Sample',
 
+    requires: [
+        'Localize.Base',
+
+        'Test1.*',
+        'Sample.nested.*'
+    ],
+
     controllers: [
         'Main'
     ],

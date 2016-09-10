@@ -317,7 +317,8 @@
         },
         "compressor": {
             "type": "yui"
-        }
+        },
+        "productionMode": true
     },
     
     /**

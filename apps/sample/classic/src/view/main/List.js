@@ -16,7 +16,7 @@ Ext.define('Sample.view.main.List', {
     },
 
     columns: [
-        {text: '^name', dataIndex: 'name'}, //lookup using string notation (Recommended)
+        {text: '~name', dataIndex: 'name'}, //lookup using string notation (Recommended)
         {text: 'Email', dataIndex: 'email', flex: 1},
         {
             text: {

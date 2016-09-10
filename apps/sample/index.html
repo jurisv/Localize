@@ -47,6 +47,7 @@
             }
 
             return function (manifest) {
+
                 manifest.content.localize = {
                     //detected or overridden language
                     language: lang,
@@ -62,8 +63,8 @@
                     // All Strings will be resolved only within it's own package
                     // You can access localizations from main application via foreign package notation appName|variableName
                     usePackages: true,
-                    // Optionally enable runtime debug messages
-                    debug: true
+                    // All but production builds will have useful warnings/ debug information
+                    debug: !manifest.content.productionMode
                 };
             };
         };
