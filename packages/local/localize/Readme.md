@@ -3,6 +3,7 @@
 Compatibility:
 Ext JS 6EA +
 
+Version 2.1.0
 
 
 ####Example 1 - Simple string
@@ -92,7 +93,7 @@ Localize.Base.lookup('navigation.users', 'Sample');
 
 
 #
-#### Payload examples
+####Payload examples
 
 locale-en-US.json
 ```
@@ -121,6 +122,7 @@ locale-es-ES.json
 #### Installation and Config
 1) Add this package to your local packages folder
 2) In app.json build profile add localize package as requirement, e.g. 
+
 ```
 "builds": {
         "classic": {
@@ -141,6 +143,34 @@ locale-es-ES.json
         }
     },
 ```
+
+We also add custom property "productionMode" and set it to true. This will be visible only in production build and used later to turn off any debugging.
+If you have the production section within build profiles, make sure that you place that variable within same location ('production' object)
+```
+/**
+     * Settings specific to production builds.
+     */
+    "production": {
+        "output": {
+            "appCache": {
+                "enable": false,
+                "path": "cache.appcache"
+            }
+        },
+        "loader": {
+            "cache": "${build.timestamp}"
+        },
+        "cache": {
+            "enable": true
+        },
+        "compressor": {
+            "type": "yui"
+        },
+        "productionMode": true
+    },
+```
+
+
 3) In every package that should be localized add the following config to the package.json
 ```
  /**
@@ -154,7 +184,7 @@ locale-es-ES.json
 ```
 
 4) In your index file we have to provide some hints that we would like to take advantage of this localization package
-Example index.html script block:
+Example index.html script block
 ```javascript
         var Ext = Ext || {}; // Ext namespace won't be defined yet...
 
@@ -209,12 +239,33 @@ Example index.html script block:
                     // All Strings will be resolved only within it's own package
                     // You can access localizations from main application via foreign package notation appName|variableName
                     usePackages: true,
-                    // Optionally enable runtime debug messages
-                    debug: true
+                    // All but production builds will have useful warnings/ debug information
+                    debug: !manifest.content.productionMode
                 };
             };
         };
 
+```
+
+5) In Applciation.js require the Localization Base class. It should be the required after any Ext classes, but before your own packages
+```
+Ext.define('Sample.Application', {
+    extend: 'Ext.app.Application',
+
+    name: 'Sample',
+
+    requires: [
+        'Localize.Base',
+
+        'Test1.*',
+        'Sample.nested.*'
+    ],
+...
+```
+
+6) IMPORTANT! Disable Sencha CMD production build optimizations. In file .sencha/production.properties add the following line
+```
+build.optimize=
 ```
 
 #

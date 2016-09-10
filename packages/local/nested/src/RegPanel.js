@@ -12,7 +12,7 @@ Ext.define('Sample.nested.RegPanel', {
             fieldLabel: {$key: 'firstName'}
         },
         {
-            fieldLabel: '^lastName'
+            fieldLabel: '~lastName'
         }
     ]
 });

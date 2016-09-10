@@ -6,24 +6,24 @@ Ext.define('Test1.Users', {
         type: 'vbox',
         align: 'stretch'
     },
-    title: '^title',
+    title: '~title',
     defaults: {
         flex: 1
     },
     items: [
         {
             xtype: 'panel',
-            title: '^title',
-            html: '^content.dummy'
+            title: '~title',
+            html: '~content.dummy'
         },
         {
             xtype: 'panel',
-            title: '^title2',
-            html: '^Sample|navigation.users'
+            title: '~title2',
+            html: '~Sample|navigation.users'
         },
         {
             xtype: 'panel',
-            title: '^title3' // Missing localization as example (observe console log)
+            title: '~title3' // Missing localization as example (observe console log)
         }
     ]
 });
